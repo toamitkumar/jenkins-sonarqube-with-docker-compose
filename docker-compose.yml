@@ -1,0 +1,15 @@
+version: '3'
+
+volumes:
+  jenkins-data:
+
+services:
+  jenkins:
+    build: ./jenkins
+    restart: always
+    ports:
+      - "18080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker:/usr/local/bin/docker
+      - jenkins-data:/var/lib/jenkins/
